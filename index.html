@@ -10,7 +10,7 @@
             --accent: #3b82f6;
             --bg-site: #f1f5f9;
             --sidebar-width: 340px;
-            --radius: 28px; /* Coins encore plus doux */
+            --radius: 28px;
         }
 
         body {
@@ -49,7 +49,6 @@
             overflow-y: auto;
         }
 
-        /* Liens de Newsletters & À propos */
         .nav-item {
             display: block;
             padding: 18px;
@@ -128,6 +127,7 @@
             max-width: 600px;
             margin: auto;
             text-align: center;
+            overflow-y: auto;
         }
 
         /* --- MOBILE --- */
@@ -180,7 +180,10 @@
 <body>
 
     <div id="mobile-header">
-        <span style="font-weight: 800; letter-spacing: -0.5px; font-size: 1rem; color: var(--primary);">LA LETTRE DE MACÉO</span>
+        <div>
+            <div style="font-weight: 800; letter-spacing: -0.5px; font-size: 1rem; color: var(--primary);">LA LETTRE DE MACÉO</div>
+            <div style="font-size: 0.65rem; color: var(--accent); font-weight: 600; text-transform: uppercase;">Created by Macéo</div>
+        </div>
         <button id="open-menu">MENU ☰</button>
     </div>
 
@@ -189,7 +192,7 @@
     <aside id="sidebar">
         <div class="sidebar-header">
             <h1 style="margin:0; font-size: 1.4rem; letter-spacing: -1px;">La Lettre De Macéo</h1>
-            <p style="margin: 5px 0 0 0; opacity: 0.7; font-size: 0.85rem;">Analyses & Stratégies Financières</p>
+            <p style="margin: 5px 0 0 0; opacity: 0.8; font-size: 0.85rem; font-style: italic; font-weight: 300;">Created by Macéo</p>
         </div>
 
         <div class="nav-list">
@@ -234,7 +237,7 @@
                     <br><br>
                     Mon objectif : vous donner les clés pour naviguer avec confiance dans l'actualité économique.
                 </p>
-                <div style="margin-top: 30px; padding: 20px; background: #f8fafc; border-radius: 15px; font-style: italic; color: #64748b;">
+                <div style="margin-top: 30px; padding: 20px; background: #f8fafc; border-radius: 15px; font-style: italic; color: #64748b; text-align: center;">
                     "La connaissance est le meilleur investissement que l'on puisse faire."
                 </div>
             </div>
@@ -266,7 +269,7 @@
 
         function showAbout(element) {
             iframe.style.display = 'none';
-            textContainer.style.display = 'flex';
+            textContainer.style.display = 'block';
             welcomeMsg.style.display = 'none';
             aboutMsg.style.display = 'block';
             setActive(element);
