@@ -75,14 +75,15 @@
             box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
         }
 
-        .card-locked {
+        /* Onglet Prochaine Edition (Lock) */
+        .card-upcoming {
             background: #f8fafc;
             border: 2px dashed #cbd5e1;
             border-radius: 20px;
             padding: 18px;
             text-align: center;
             opacity: 0.7;
-            margin-bottom: 12px;
+            margin-top: 10px;
         }
 
         /* --- FOOTER --- */
@@ -126,7 +127,7 @@
             padding: 40px;
             max-width: 600px;
             margin: auto;
-            text-align: center;
+            text-align: left;
             overflow-y: auto;
         }
 
@@ -196,19 +197,19 @@
         </div>
 
         <div class="nav-list">
-            <a class="nav-item" onclick="showAbout(this)">
+            <a class="nav-item active" id="btn-about" onclick="showAbout(this)">
                 <div style="font-size: 0.7rem; text-transform: uppercase; font-weight: 800; color: var(--accent); margin-bottom: 4px;">En savoir plus</div>
                 <div style="font-weight: 700;">🧑‍💻 À propos de moi</div>
             </a>
 
-            <a class="nav-item" onclick="loadNewsletter('V1.html', this)">
-                <div style="font-size: 0.7rem; text-transform: uppercase; font-weight: 800; opacity: 0.6; margin-bottom: 4px;">Édition #1</div>
+            <a class="nav-item" onclick="loadNewsletter('Newsletter 1 .html', this)">
+                <div style="font-size: 0.7rem; text-transform: uppercase; font-weight: 800; opacity: 0.6; margin-bottom: 4px;">Dernière édition</div>
                 <div style="font-weight: 700;">📈 Une action, c'est quoi ?</div>
             </a>
 
-            <div class="card-locked">
-                <div style="font-weight: 700; font-size: 0.9rem; color: #64748b;">🔒 Jeudi 5 Février</div>
-                <div style="font-size: 0.7rem; text-transform: uppercase; margin-top: 5px; letter-spacing: 1px;">Édition Spéciale</div>
+            <div class="card-upcoming">
+                <div style="font-size: 0.7rem; text-transform: uppercase; font-weight: 800; color: #64748b; margin-bottom: 4px;">Prochaine édition</div>
+                <div style="font-weight: 700; color: #94a3b8;">🔒 Disponible la semaine prochaine !</div>
             </div>
         </div>
 
@@ -220,26 +221,14 @@
 
     <main id="content-viewer">
         <div id="text-content" class="content-placeholder">
-            <div id="welcome-msg">
-                <div style="font-size: 3.5rem; margin-bottom: 20px;">👋</div>
-                <h2 style="font-size: 1.8rem; letter-spacing: -1px;">Bienvenue sur La Lettre.</h2>
-                <p style="color: #64748b; line-height: 1.6;">Sélectionnez une édition pour commencer à explorer le monde de la finance et de la stratégie.</p>
-            </div>
-
-            <div id="about-msg" style="display: none; text-align: left;">
+            <div id="about-msg">
                 <h2 style="font-size: 1.8rem; letter-spacing: -1px; text-align: center;">À propos de moi</h2>
                 <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
                 <p style="line-height: 1.7; color: #334155;">
-                    Bonjour, je suis <strong>Macéo Pauron</strong>.<br><br>
-                    Passionné par l'économie et les dynamiques de marché, j'ai lancé cette newsletter pour décrypter les concepts financiers complexes et les rendre accessibles à tous. 
+                    Je m’appelle <strong>Macéo Pauron</strong>, je suis étudiant en 1ère année de Licence Gestion et je suis passionné par l’économie, la finance et l’investissement.
                     <br><br>
-                    Chaque semaine, je partage mes analyses, mes découvertes et mes réflexions pour vous aider à mieux comprendre les enjeux de l'investissement et de la stratégie d'entreprise. 
-                    <br><br>
-                    Mon objectif : vous donner les clés pour naviguer avec confiance dans l'actualité économique.
+                    Dans cette newsletter, je partage des explications simples et des analyses pour mieux comprendre le monde qui nous entoure. N'hésitez pas à consulter mon LinkedIn pour être au courant de mes futurs projets !
                 </p>
-                <div style="margin-top: 30px; padding: 20px; background: #f8fafc; border-radius: 15px; font-style: italic; color: #64748b; text-align: center;">
-                    "La connaissance est le meilleur investissement que l'on puisse faire."
-                </div>
             </div>
         </div>
 
@@ -251,7 +240,6 @@
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
         const iframe = document.getElementById('main-iframe');
-        const welcomeMsg = document.getElementById('welcome-msg');
         const aboutMsg = document.getElementById('about-msg');
         const textContainer = document.getElementById('text-content');
 
@@ -270,7 +258,6 @@
         function showAbout(element) {
             iframe.style.display = 'none';
             textContainer.style.display = 'block';
-            welcomeMsg.style.display = 'none';
             aboutMsg.style.display = 'block';
             setActive(element);
         }
