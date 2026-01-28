@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Lettre De Macéo</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #3b82f6;
+            --bg-site: #f1f5f9;
+            --glass: rgba(255, 255, 255, 0.8);
+            --sidebar-width: 340px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            background-color: var(--bg-site);
+            color: var(--primary);
+        }
+
+        /* --- SIDEBAR DESIGN --- */
+        #sidebar {
+            width: var(--sidebar-width);
+            background: white;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 10px 0 30px rgba(0,0,0,0.02);
+            z-index: 10;
+        }
+
+        .sidebar-header {
+            padding: 40px 25px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.4rem;
+            margin: 0;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-list {
+            padding: 25px 15px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        /* --- ÉLÉMENT VERROUILLÉ STYLÉ --- */
