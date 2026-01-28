@@ -10,7 +10,7 @@
             --accent: #3b82f6;
             --bg-site: #f1f5f9;
             --sidebar-width: 340px;
-            --radius: 24px; /* Plus arrondi */
+            --radius: 28px; /* Coins encore plus doux */
         }
 
         body {
@@ -29,9 +29,9 @@
             background: white;
             display: flex;
             flex-direction: column;
-            margin: 10px; /* Petit espace pour l'effet flottant */
+            margin: 15px;
             border-radius: var(--radius);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
             z-index: 1000;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -49,41 +49,41 @@
             overflow-y: auto;
         }
 
-        /* Liens de Newsletters */
-        .newsletter-link {
+        /* Liens de Newsletters & À propos */
+        .nav-item {
             display: block;
             padding: 18px;
             margin-bottom: 12px;
             background: #fff;
             border: 1px solid #e2e8f0;
-            border-radius: 18px;
+            border-radius: 20px;
             text-decoration: none;
             color: var(--primary);
             transition: all 0.2s;
             cursor: pointer;
         }
 
-        .newsletter-link:hover {
+        .nav-item:hover {
             border-color: var(--accent);
             background: #f0f7ff;
-            transform: scale(1.02);
+            transform: translateY(-2px);
         }
 
-        .newsletter-link.active {
+        .nav-item.active {
             background: var(--accent);
             color: white;
             border-color: var(--accent);
-            box-shadow: 0 8px 15px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
         }
 
-        /* Carte verrouillée */
         .card-locked {
             background: #f8fafc;
             border: 2px dashed #cbd5e1;
-            border-radius: 18px;
+            border-radius: 20px;
             padding: 18px;
             text-align: center;
-            opacity: 0.8;
+            opacity: 0.7;
+            margin-bottom: 12px;
         }
 
         /* --- FOOTER --- */
@@ -97,7 +97,7 @@
 
         .btn {
             padding: 16px;
-            border-radius: 16px;
+            border-radius: 18px;
             text-decoration: none;
             font-weight: 700;
             font-size: 0.95rem;
@@ -107,7 +107,6 @@
 
         .btn-blue { background: var(--accent); color: white; }
         .btn-dark { background: var(--primary); color: white; }
-        .btn:active { transform: scale(0.95); }
 
         /* --- ZONE PRINCIPALE --- */
         #content-viewer {
@@ -115,41 +114,40 @@
             display: flex;
             flex-direction: column;
             background: white;
-            margin: 10px 10px 10px 0;
+            margin: 15px 15px 15px 0;
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            position: relative;
         }
 
         iframe { width: 100%; height: 100%; border: none; display: none; }
 
-        .welcome-screen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
+        .content-placeholder {
+            padding: 40px;
+            max-width: 600px;
+            margin: auto;
             text-align: center;
-            padding: 30px;
         }
 
         /* --- MOBILE --- */
         #mobile-header {
             display: none;
-            padding: 20px;
+            padding: 15px 20px;
             align-items: center;
             justify-content: space-between;
+            background: white;
+            border-bottom: 1px solid #eee;
         }
 
         #open-menu {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 15px 25px; /* Menu plus gros */
+            padding: 12px 20px;
             border-radius: 50px;
             font-weight: 800;
-            font-size: 1rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
@@ -164,14 +162,14 @@
                 border-radius: 0 var(--radius) var(--radius) 0;
             }
             #sidebar.open { transform: translateX(0); }
-            #content-viewer { margin: 10px; height: 100%; }
+            #content-viewer { margin: 15px; }
         }
 
         .overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(15, 23, 42, 0.5);
             backdrop-filter: blur(4px);
             z-index: 999;
         }
@@ -182,7 +180,7 @@
 <body>
 
     <div id="mobile-header">
-        <span style="font-weight: 900; letter-spacing: -1px; font-size: 1.2rem;">MACÉO.</span>
+        <span style="font-weight: 800; letter-spacing: -0.5px; font-size: 1rem; color: var(--primary);">LA LETTRE DE MACÉO</span>
         <button id="open-menu">MENU ☰</button>
     </div>
 
@@ -191,19 +189,23 @@
     <aside id="sidebar">
         <div class="sidebar-header">
             <h1 style="margin:0; font-size: 1.4rem; letter-spacing: -1px;">La Lettre De Macéo</h1>
-            <p style="margin: 5px 0 0 0; opacity: 0.7; font-size: 0.85rem;">Analyses & Stratégies</p>
+            <p style="margin: 5px 0 0 0; opacity: 0.7; font-size: 0.85rem;">Analyses & Stratégies Financières</p>
         </div>
 
-        <div class="nav-list" id="links-container">
-            <a class="newsletter-link" onclick="loadNewsletter('V1.html', this)">
+        <div class="nav-list">
+            <a class="nav-item" onclick="showAbout(this)">
+                <div style="font-size: 0.7rem; text-transform: uppercase; font-weight: 800; color: var(--accent); margin-bottom: 4px;">En savoir plus</div>
+                <div style="font-weight: 700;">🧑‍💻 À propos de moi</div>
+            </a>
+
+            <a class="nav-item" onclick="loadNewsletter('V1.html', this)">
                 <div style="font-size: 0.7rem; text-transform: uppercase; font-weight: 800; opacity: 0.6; margin-bottom: 4px;">Édition #1</div>
                 <div style="font-weight: 700;">📈 Une action, c'est quoi ?</div>
             </a>
 
             <div class="card-locked">
-                <div style="font-size: 1.2rem; margin-bottom: 5px;">🔒</div>
-                <div style="font-weight: 700; font-size: 0.9rem;">Édition du 5 Février</div>
-                <div style="font-size: 0.75rem; color: #64748b; margin-top: 4px;">Arrive jeudi prochain...</div>
+                <div style="font-weight: 700; font-size: 0.9rem; color: #64748b;">🔒 Jeudi 5 Février</div>
+                <div style="font-size: 0.7rem; text-transform: uppercase; margin-top: 5px; letter-spacing: 1px;">Édition Spéciale</div>
             </div>
         </div>
 
@@ -214,11 +216,30 @@
     </aside>
 
     <main id="content-viewer">
-        <div class="welcome-screen" id="welcome-msg">
-            <div style="font-size: 3.5rem; margin-bottom: 20px;">👋</div>
-            <h2 style="font-size: 1.8rem; letter-spacing: -1px;">Ravi de vous revoir !</h2>
-            <p style="color: #64748b; max-width: 300px; line-height: 1.6;">Sélectionnez une édition dans le menu pour commencer la lecture.</p>
+        <div id="text-content" class="content-placeholder">
+            <div id="welcome-msg">
+                <div style="font-size: 3.5rem; margin-bottom: 20px;">👋</div>
+                <h2 style="font-size: 1.8rem; letter-spacing: -1px;">Bienvenue sur La Lettre.</h2>
+                <p style="color: #64748b; line-height: 1.6;">Sélectionnez une édition pour commencer à explorer le monde de la finance et de la stratégie.</p>
+            </div>
+
+            <div id="about-msg" style="display: none; text-align: left;">
+                <h2 style="font-size: 1.8rem; letter-spacing: -1px; text-align: center;">À propos de moi</h2>
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+                <p style="line-height: 1.7; color: #334155;">
+                    Bonjour, je suis <strong>Macéo Pauron</strong>.<br><br>
+                    Passionné par l'économie et les dynamiques de marché, j'ai lancé cette newsletter pour décrypter les concepts financiers complexes et les rendre accessibles à tous. 
+                    <br><br>
+                    Chaque semaine, je partage mes analyses, mes découvertes et mes réflexions pour vous aider à mieux comprendre les enjeux de l'investissement et de la stratégie d'entreprise. 
+                    <br><br>
+                    Mon objectif : vous donner les clés pour naviguer avec confiance dans l'actualité économique.
+                </p>
+                <div style="margin-top: 30px; padding: 20px; background: #f8fafc; border-radius: 15px; font-style: italic; color: #64748b;">
+                    "La connaissance est le meilleur investissement que l'on puisse faire."
+                </div>
+            </div>
         </div>
+
         <iframe name="viewer" id="main-iframe"></iframe>
     </main>
 
@@ -228,6 +249,8 @@
         const overlay = document.getElementById('overlay');
         const iframe = document.getElementById('main-iframe');
         const welcomeMsg = document.getElementById('welcome-msg');
+        const aboutMsg = document.getElementById('about-msg');
+        const textContainer = document.getElementById('text-content');
 
         function toggleMenu() {
             sidebar.classList.toggle('open');
@@ -235,19 +258,24 @@
         }
 
         function loadNewsletter(url, element) {
-            // Affichage de l'iframe
-            welcomeMsg.style.display = 'none';
+            textContainer.style.display = 'none';
             iframe.style.display = 'block';
             iframe.src = url;
+            setActive(element);
+        }
 
-            // Gestion de la classe active
-            document.querySelectorAll('.newsletter-link').forEach(l => l.classList.remove('active'));
+        function showAbout(element) {
+            iframe.style.display = 'none';
+            textContainer.style.display = 'flex';
+            welcomeMsg.style.display = 'none';
+            aboutMsg.style.display = 'block';
+            setActive(element);
+        }
+
+        function setActive(element) {
+            document.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
             element.classList.add('active');
-
-            // Fermeture du menu sur mobile après clic
-            if (window.innerWidth <= 768) {
-                toggleMenu();
-            }
+            if (window.innerWidth <= 768) toggleMenu();
         }
 
         openBtn.addEventListener('click', toggleMenu);
