@@ -9,180 +9,130 @@
             --primary: #0f172a;
             --accent: #3b82f6;
             --bg-site: #f1f5f9;
-            --glass: rgba(255, 255, 255, 0.8);
             --sidebar-width: 340px;
         }
 
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
             display: flex;
             height: 100vh;
             background-color: var(--bg-site);
             color: var(--primary);
+            overflow: hidden;
         }
 
-        /* --- SIDEBAR DESIGN --- */
+        /* --- SIDEBAR --- */
         #sidebar {
             width: var(--sidebar-width);
             background: white;
             display: flex;
             flex-direction: column;
-            border-right: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 10px 0 30px rgba(0,0,0,0.02);
-            z-index: 10;
+            border-right: 1px solid #e2e8f0;
+            z-index: 1000;
+            transition: transform 0.3s ease;
         }
 
         .sidebar-header {
-            padding: 40px 25px;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 30px 20px;
+            background: var(--primary);
             color: white;
         }
 
-        .sidebar-header h1 {
-            font-size: 1.4rem;
-            margin: 0;
-            letter-spacing: -0.5px;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
         .nav-list {
-            padding: 25px 15px;
+            padding: 20px;
             flex-grow: 1;
             overflow-y: auto;
         }
 
-        /* --- ÉLÉMENT VERROUILLÉ STYLÉ --- */
+        /* Carte de l'édition verrouillée */
         .card-locked {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
             padding: 20px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            text-align: center;
         }
 
-        .card-locked::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--accent);
-        }
-
-        .tag-soon {
-            display: inline-block;
+        .tag {
             background: #dbeafe;
             color: #1e40af;
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-bottom: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
             text-transform: uppercase;
         }
 
-        .date-text {
-            font-size: 1.1rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* --- FOOTER SIDEBAR --- */
+        /* --- FOOTER --- */
         .sidebar-footer {
             padding: 20px;
-            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .btn {
-            padding: 14px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
             text-align: center;
-            transition: transform 0.2s, filter 0.2s;
         }
 
-        .btn-blue { background: var(--accent); color: white; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+        .btn-blue { background: var(--accent); color: white; }
         .btn-dark { background: var(--primary); color: white; }
-        .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
-        /* --- MAIN VIEWER --- */
+        /* --- ZONE PRINCIPALE --- */
         #content-viewer {
             flex-grow: 1;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle at center, #ffffff 0%, #f1f5f9 100%);
+            flex-direction: column;
+            background: white;
             position: relative;
         }
 
-        .hero-empty {
-            text-align: center;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .hero-empty h2 { font-size: 2.5rem; margin-bottom: 15px; letter-spacing: -1px; }
-        .hero-empty p { color: #64748b; font-size: 1.1rem; max-width: 500px; margin: 0 auto; line-height: 1.6; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- MOBILE NAV --- */
-        #mobile-nav-bar {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            height: 60px;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding: 0 20px;
+        /* Message qui s'affiche quand il n'y a pas encore de news */
+        .welcome-screen {
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* --- MOBILE --- */
+        #mobile-header {
+            display: none;
+            background: var(--primary);
+            color: white;
+            padding: 15px;
             justify-content: space-between;
-            z-index: 100;
+            align-items: center;
         }
 
         @media (max-width: 768px) {
             body { flex-direction: column; }
-            #mobile-nav-bar { display: flex; }
+            #mobile-header { display: flex; }
             #sidebar {
                 position: fixed;
-                left: -100%; top: 0; bottom: 0;
-                width: 85%;
-                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                left: 0; top: 0; bottom: 0;
+                transform: translateX(-100%);
+                width: 280px;
             }
-            #sidebar.open { left: 0; }
-            #content-viewer { padding-top: 60px; }
-            .hero-empty h2 { font-size: 1.8rem; }
-        }
-
-        #menu-trigger {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 8px;
-            font-weight: 600;
+            #sidebar.open { transform: translateX(0); }
         }
 
         .overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(4px);
-            z-index: 9;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
         }
         .overlay.active { display: block; }
 
@@ -190,58 +140,53 @@
 </head>
 <body>
 
-    <div id="mobile-nav-bar">
-        <span style="font-weight: 800; font-size: 0.9rem;">LA LETTRE DE MACÉO</span>
-        <button id="menu-trigger">Menu ☰</button>
+    <div id="mobile-header">
+        <span style="font-weight: bold;">La Lettre De Macéo</span>
+        <button id="open-menu" style="background:none; border:1px solid white; color:white; padding:5px 10px; border-radius:5px;">Menu ☰</button>
     </div>
 
     <div class="overlay" id="overlay"></div>
 
     <aside id="sidebar">
         <div class="sidebar-header">
-            <h1>La Lettre De Macéo</h1>
-            <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 8px;">Analyses, Finance & Stratégie</p>
+            <h1 style="margin:0; font-size: 1.2rem;">La Lettre De Macéo</h1>
         </div>
 
         <div class="nav-list">
             <div class="card-locked">
-                <span class="tag-soon">Bientôt disponible</span>
-                <div class="date-text">🔒 Jeudi 5 Février</div>
-                <p style="font-size: 0.85rem; color: #64748b; margin: 10px 0 0 0;">
-                    La prochaine édition est en cours de rédaction.
-                </p>
+                <span class="tag">Bientôt</span>
+                <p style="font-weight: bold; margin: 10px 0 5px 0;">🔒 Édition #1</p>
+                <p style="font-size: 0.8rem; color: #64748b;">Disponible le jeudi 5 février</p>
             </div>
         </div>
 
         <div class="sidebar-footer">
-            <a href="https://www.linkedin.com/in/maceo-pauron-56a6052b0" target="_blank" class="btn btn-dark">Profil LinkedIn</a>
-            <a href="https://subscription-newsletter.vercel.app/" target="_blank" class="btn btn-blue">S'abonner gratuitement</a>
+            <a href="https://www.linkedin.com/in/maceo-pauron-56a6052b0" target="_blank" class="btn btn-dark">Mon LinkedIn</a>
+            <a href="https://subscription-newsletter.vercel.app/" target="_blank" class="btn btn-blue">S'abonner</a>
         </div>
     </aside>
 
     <main id="content-viewer">
-        <div class="hero-empty">
-            <div style="background: white; width: 80px; height: 80px; border-radius: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.05); font-size: 2rem;">
-                ✍️
-            </div>
-            <h2>Préparez votre café.</h2>
-            <p>Le contenu est en route. On se retrouve le <strong>jeudi 5 février</strong> pour une nouvelle analyse exclusive.</p>
+        <div class="welcome-screen">
+            <div style="font-size: 3rem;">⏳</div>
+            <h2 style="margin-top: 20px;">Lancement imminent</h2>
+            <p style="color: #64748b; max-width: 400px;">Le site est en ligne. La première édition arrive le <strong>jeudi 5 février</strong> directement ici.</p>
         </div>
-        <iframe name="viewer" id="main-iframe" style="display: none; width: 100%; height: 100%; border: none;"></iframe>
     </main>
 
     <script>
-        const btn = document.getElementById('menu-trigger');
+        const openBtn = document.getElementById('open-menu');
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
 
-        function toggle() {
+        // Fonction simple pour ouvrir/fermer le menu
+        function toggleMenu() {
             sidebar.classList.toggle('open');
             overlay.classList.toggle('active');
         }
 
-        btn.addEventListener('click', toggle);
-        overlay.addEventListener('click', toggle);
+        openBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
     </script>
 </body>
 </html>
