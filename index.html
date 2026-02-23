@@ -132,7 +132,7 @@
             overflow-y: auto;
         }
 
-        /* --- WIDGET DON (Buy Me a Coffee) --- */
+        /* --- WIDGET DON FLOAT --- */
         .donation-widget {
             position: fixed;
             bottom: 30px;
@@ -149,18 +149,11 @@
             font-size: 0.95rem;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: pulse 2s infinite;
         }
 
         .donation-widget:hover {
             transform: scale(1.08) translateY(-5px);
             box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 221, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0); }
         }
 
         /* --- MOBILE --- */
@@ -273,11 +266,12 @@
                 <h2 style="font-size: 1.8rem; letter-spacing: -1px; text-align: center;">À propos de moi</h2>
                 <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
                 <p style="line-height: 1.7; color: #334155;">
-                    Je m’appelle <strong>Macéo Pauron</strong>, étudiant en L1 Gestion et passionné par l’économie et l'investissement.
+                    Je m’appelle <strong>Macéo Pauron</strong>, je suis étudiant en 1ère année de Licence Gestion et je suis passionné par l’économie, la finance et l’investissement.
                     <br><br>
-                    Cette newsletter est <strong>100% gratuite</strong> pour rester accessible à tous, mais sa gestion (outils, données) a un coût. 
+                    Dans cette newsletter, je partage des explications simples et des analyses pour mieux comprendre le monde qui nous entoure. N'hésitez pas à consulter mon LinkedIn pour être au courant de mes futurs projets !
                     <br><br>
-                    Si mes analyses vous sont utiles, votre soutien m'aide directement à maintenir ce projet et sa qualité. Merci !
+                    <strong>Pourquoi soutenir le projet ?</strong><br>
+                    La newsletter est gratuite et le restera pour être accessible à tous. Cependant, sa création implique des frais réguliers (outils de diffusion, accès aux données financières). Si mon travail vous est utile, vous pouvez m'aider à couvrir ces coûts via un don libre. Merci pour votre soutien !
                 </p>
             </div>
         </div>
@@ -285,7 +279,7 @@
         <iframe name="viewer" id="main-iframe"></iframe>
     </main>
 
-    <a href="https://buymeacoffee.com/lalettredemaceo?new=1" target="_blank" class="donation-widget">
+    <a href="https://buymeacoffee.com/lalettredemaceo" target="_blank" class="donation-widget">
         <span style="font-size: 1.4rem; margin-right: 8px;">☕</span>
         Soutenir le projet
     </a>
